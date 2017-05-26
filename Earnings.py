@@ -26,3 +26,8 @@ def parse_html(html_object):
 
 def __init__(self, earnings_html):
     parse_html(earnings_html)
+
+def lookup_logo(self):
+    # lookup logo using 
+
+
