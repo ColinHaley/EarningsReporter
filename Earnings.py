@@ -1,4 +1,4 @@
-class Test(object):
+class Earnings(object):
     """An individual event parsed from https://www.earningswhispers.com/calendar?sb=p&d=1&t=all&v=t
     
     d = 0 is today. ++ or -- for prior and current days
