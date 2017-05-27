@@ -12,6 +12,7 @@ def send_email(content):
     #send it home folks
 
 
+# Also apparnetly need ul id="morecalendar"
 if __name__ == "__main__":
     r = requests.get(today_earnings_whisper_url).content
     soup = BeautifulSoup(r)
