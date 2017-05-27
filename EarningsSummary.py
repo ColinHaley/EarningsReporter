@@ -15,7 +15,10 @@ def send_email(content):
 if __name__ == "__main__":
     r = requests.get(today_earnings_whisper_url).content
     soup = BeautifulSoup(r)
-    earnings_data = soup.findAll("li", {"class":"cor bmo showconf nwh"})
+    earnings_data_even_cor = soup.findAll("li", {"class":"cor bmo showconf nwh"})
+    earnings_data_even_cors = soup.findAll("li", {"class":"cors bmo showconf nwh"})
+    earnings_data_even_cor_shownot = soup.findAll("li", {"class":"cor bmo shownotconf nwh"})
+    earnings_data_even_cors_shownot = soup.findAll("li", {"class":"cors bmo shownotconf nwh"})
 
 
 

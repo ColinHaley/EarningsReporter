@@ -3,6 +3,7 @@
 * Create 1 Earnings Object for each earnings per symbol                   
 * Create jinja2 template                                                  
 * send email with t+1 summary and t+1..14 summary [BASIC]                 
+* Parse ul id="epscalendar" for unique li classes <> "calhead"
 
 #2.0
 * Add market catalysts from catalysttracker.com  
