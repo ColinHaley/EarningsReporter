@@ -22,12 +22,12 @@ class Earnings(object):
     __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
 
 def parse_html(html_object):
-    """parse objects into variables"""
+    """parse html objects to variables"""
 
 def __init__(self, earnings_html):
     parse_html(earnings_html)
 
-def lookup_logo(self):
+#def lookup_logo(self):
     # lookup logo using 
 
 
