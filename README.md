@@ -7,6 +7,7 @@
 #2.0
 * Add market catalysts from catalysttracker.com  
 * Analyst Actions [upgrades and downgrades] 
+* Add PushBullet option
 
 #3.0
 * Add News via SMMRY for:

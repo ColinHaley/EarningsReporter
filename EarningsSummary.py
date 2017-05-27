@@ -8,6 +8,11 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 today_earnings_whisper_url = "https://www.earningswhispers.com/calendar?sb=p&d=0&t=all"
 
 if __name__ == "__main__":
-    r = requests.get(today_earnings_whisper_url)
+    r = requests.get(today_earnings_whisper_url).content
+    soup = BeautifulSoup(r)
+    earnings_data = soup.findAll("ul", {"id":"epscalendar"})
+
+
+
 
 
