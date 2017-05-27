@@ -1,8 +1,6 @@
 class Earnings(object):
     """An individual event parsed from https://www.earningswhispers.com/calendar?sb=p&d=1&t=all&v=t
-    
     d = 0 is today. d++ for days
-
     Attributes:
         Confirmed: A Boolean representing confirmation of an earnings report.
         Company: A string representing Company Name
@@ -11,7 +9,6 @@ class Earnings(object):
         Estimated EPS: 
         Estimated Revenue:
     """
-
     def __init__(self, earnings_html):
         """parse html objects to variables
         
@@ -23,13 +20,4 @@ class Earnings(object):
         self.time = earnings_html.findAll('div', {'class':'time'}) # earnings datetime
         self.estimated_eps = earnings_html.findAll('div', {'class':'estimate'}) # eps estimate
         self.estimated_revenue = earnings_html.findAll('div', {'class':'revestimate'}) #evenue estimate
-
-    #def lookup_logo(self):
-        # lookup logo using 
-
-    __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
-        
-
-
-
-
+#    __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
