@@ -38,7 +38,9 @@ formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-
+# redirect stdout and stderr to the logger
+sys.stdout = Logger(logger, logging.INFO)
+sys.stderr = Logger(logger, logging.ERROR)
 
 
 if __name__ == '__main__':
@@ -58,12 +60,13 @@ if __name__ == '__main__':
         except:
             pass
 
-def init():
+def init(self):
     """
     Initialize Logger and write out system stats and runtimes
 
     """
-    
+    logger.info()
+    logger.
 
 def send_email(content):
     #send it home folks
