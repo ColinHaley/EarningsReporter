@@ -31,6 +31,7 @@
 	- Tech specific sites
 		> 9to5mac
 		> YourStory
+		> Gizmodo
 
 #4.0
 Industry Specific summaries?
