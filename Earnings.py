@@ -24,7 +24,9 @@ class Earnings(object):
         try:
             confirm_date = earnings_html.findAll("div", {"class":"confirm icon-check"})[0]['title']
             if (len(confirm_date) >= 1):
-                self.confirmed = earnings_html.findAll("div", {"class":"confirm icon-check"})
+                self.confirmed = confirm_date
+            else:
+                self.confirmed = "Unconfirmed"
         except:
             self.confirmed = "Unconfirmed"
         try:
