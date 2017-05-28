@@ -5,6 +5,7 @@ from BeautifulSoup import BeautifulSoup
 import requests
 import jinja2
 from Earnings import Earnings
+from Logger import Logger
 
 today_earnings_whisper_url = "https://www.earningswhispers.com/calendar?sb=p&d={day}&t=all"
 
@@ -36,6 +37,8 @@ handler = logging.handlers.TimedRotatingFileHandler(LOG_FILENAME, when="midnight
 formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+
+
 
 
 if __name__ == '__main__':
