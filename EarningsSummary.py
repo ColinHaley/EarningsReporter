@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys, datetime
-import argparse
+import argparse, logging, logging.handlers
 import requests
 import jinja2
 from BeautifulSoup import BeautifulSoup
@@ -13,7 +13,7 @@ today_earnings_whisper_url = "https://www.earningswhispers.com/calendar?sb=p&d={
 
 # Defaults
 LOG_FILEPATH = "/tmp/EarningsSummary.log"
-LOG_LEVEL = logging.info
+LOG_LEVEL = logging.INFO
 PARSE_DAYS = 14
 
 # Parse commandline args
@@ -32,7 +32,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(LOG_LEVEL)
 
 # Keep 5 days rotate @ midnight
-handler = logging.handlers.TimedRotatingFileHandler(LOG_FILENAME, when="midnight", backupCount=5)
+handler = logging.handlers.TimedRotatingFileHandler(LOG_FILEPATH, when="midnight", backupCount=5)
+
 
 # standardize log format & attach to handler & to logger
 formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s')
@@ -45,6 +46,7 @@ sys.stderr = Logger(logger, logging.ERROR)
 
 
 if __name__ == '__main__':
+    logger.info("__main__ called.")
     init()
     # In current method of running, only earnings whisper in epscalendar tag will
     # be aggregated. Anything under "morecalendar"" will not
@@ -63,10 +65,12 @@ if __name__ == '__main__':
 
 def init(self):
     """
-    Initialize Logger and write out system stats and runtimes
+    Initialize Logger and write out system stats and runtimes.
+
+    Do any setup and configuration / sys settings needed
 
     """
-    logger.info("Initalize Called")
+    
 
 def send_email(content):
     #send it home folks
