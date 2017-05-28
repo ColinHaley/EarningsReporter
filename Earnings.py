@@ -34,22 +34,23 @@ class Earnings(object):
         except:
             self.company = "Unspecified"
         try:
-            self.ticker = earnings_html.findAll('div', {'class':'ticker'})
+            self.ticker = earnings_html.findAll('div', {'class':'ticker'})[0].text
         except:
             self.ticker = "Unspecified"
         try:
-            self.time = earnings_html.findAll('div', {'class':'time'}) # earnings datetime
+            self.time = earnings_html.findAll("div", {"class":"time"})[0].text # earnings datetime
         except:
             self.time = "Unspecified"
         try:
-            self.estimated_eps = earnings_html.findAll('div', {'class':'estimate'}) # eps estimate
+            self.estimated_eps = earnings_html.findAll('div', {'class':'estimate'})[0].text # eps estimate
         except:
             self.estimated_eps = "Unspecified"
         try:
-            self.estimated_revenue = earnings_html.findAll('div', {'class':'revestimate'}) #evenue estimate
+            self.estimated_revenue = earnings_html.findAll('div', {'class':'revestimate'})[0].text #evenue estimate
         except:
             self.estimated_revenue = "Unspecified"
 #    __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
 
     def gaga(self):
-        print("Confirmed: {0}\nCompany: {1}\n".format(self.confirmed, self.company))
+        print("Confirmed: {0}\nTicker: {1}\nCompany: {2}\nTime: {3}\nEstimated EPS: {4}\nEstimated Revenue: {5}"
+        .format(self.confirmed, self.ticker, self.company, self.time, self.estimated_eps, self.estimated_revenue))
