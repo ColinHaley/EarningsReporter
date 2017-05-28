@@ -1,3 +1,5 @@
+import uuid
+
 class Earnings(object):
     """An individual event parsed from https://www.earningswhispers.com/calendar?sb=p&d=1&t=all&v=t
     d = 0 is today. d++ for days
@@ -14,6 +16,7 @@ class Earnings(object):
         
         This is absolutely going to need some optimization. findAll calls have lots of overhead.
         """
+        self.id = uuid.uuid1()
         self.confirmed = earnings_html.findAll('div', {'class':'confirm icon-check'})
         self.company = earnings_html.findAll('div', {'class':'company'})
         self.ticker = earnings_html.findAll('div', {'class':'ticker'})
@@ -21,3 +24,6 @@ class Earnings(object):
         self.estimated_eps = earnings_html.findAll('div', {'class':'estimate'}) # eps estimate
         self.estimated_revenue = earnings_html.findAll('div', {'class':'revestimate'}) #evenue estimate
 #    __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
+
+    def gaga(self):
+        print("Confirmed: {0}\n"+"Company: {1}\n")
