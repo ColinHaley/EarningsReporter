@@ -1,3 +1,4 @@
+import logging
 class Logger(object):
     def __init__(self, logger, level):
         """ Requires logger and a level """

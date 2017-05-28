@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import logging, sys, argparse
-from BeautifulSoup import BeautifulSoup
+import sys, datetime
+import argparse
 import requests
 import jinja2
+from BeautifulSoup import BeautifulSoup
 from Earnings import Earnings
 from Logger import Logger
 
@@ -65,8 +66,7 @@ def init(self):
     Initialize Logger and write out system stats and runtimes
 
     """
-    logger.info()
-    logger.
+    logger.info("Initalize Called")
 
 def send_email(content):
     #send it home folks
