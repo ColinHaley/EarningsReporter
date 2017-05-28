@@ -22,7 +22,7 @@ class Earnings(object):
         """
         self.id = uuid.uuid1()
         try:
-            self.confirmed = earnings_html.findAll('div', {'class':'confirm icon-check'})[0].text
+            self.confirmed = earnings_html.findAll('div', {'class':'confirm icon-check'})[0].title
         except:
             self.confirmed = "Unconfirmed"
         try:
