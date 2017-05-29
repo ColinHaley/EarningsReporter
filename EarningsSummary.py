@@ -23,7 +23,7 @@ args = parser.parse_args()
 
 config = ConfigParser.ConfigParser()
 config.read('config/EarningsReporter.cfg')
-target = config.get('Parser', 'target')
+target = config.get('Scraper', 'target')
 # Might want to move into sub method with args as ... arg
 if not args.disable_log:
     LOG_LEVEL = logging.INFO
