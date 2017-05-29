@@ -25,10 +25,6 @@ config = ConfigParser.ConfigParser()
 config.read('config/EarningsReporter.cfg')
 target = config.get('Scraper', 'target')
 # Might want to move into sub method with args as ... arg
-if not args.disable_log:
-    LOG_LEVEL = logging.INFO
-    logger_setup()
-
 if args.log:
     LOG_FILEPATH = args.log
 else:
@@ -53,7 +49,7 @@ else:
 # un _setup() loggers will only write to console.
 logger = logging.getLogger(__name__)
 
-def logger_setup(self):
+def logger_setup():
     """docstring!"""
 
     #File log by script name
@@ -73,8 +69,13 @@ def logger_setup(self):
     sys.stderr = Logger(logger, logging.ERROR)
 
 
+
 if __name__ == '__main__':
-    logger.info("__main__ called.")
+    if not args.disable_log:
+        LOG_LEVEL = logging.INFO
+        logger_setup()
+        logger.info("__main__ called.")
+
     # In current method of running, only earnings whisper in epscalendar tag will
     # be aggregated. Anything under "morecalendar"" will not
     r = requests.get(target).content
