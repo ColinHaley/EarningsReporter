@@ -25,7 +25,7 @@ config = ConfigParser.ConfigParser()
 config.read('config/EarningsReporter.cfg')
 target = config.get('Scraper', 'target')
 # Might want to move into sub method with args as ... arg
-if args.log:
+if args.logpath:
     LOG_FILEPATH = args.log
 else:
     LOG_FILEPATH = config.get('Logging', 'filepath')
