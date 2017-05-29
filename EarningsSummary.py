@@ -69,8 +69,6 @@ def logger_setup():
     sys.stdout = Logger(logger, logging.INFO)
     sys.stderr = Logger(logger, logging.ERROR)
 
-
-
 if __name__ == '__main__':
     if not args.disable_log:
         LOG_LEVEL = logging.INFO
@@ -79,7 +77,9 @@ if __name__ == '__main__':
 
     # In current method of running, only earnings whisper in epscalendar tag will
     # be aggregated. Anything under "morecalendar"" will not
+    logger.info("Target: "+target)
     r = requests.get(target).content
+    
     soup = BeautifulSoup(r)
     earnings_data = []
     # eps calendar should always exist
