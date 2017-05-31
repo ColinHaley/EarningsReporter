@@ -36,6 +36,9 @@ if args.days:
 else:
     PARSE_DAYS = config.get('Scraper', 'days')
 
+# 0 index, keep 0 but make sure top range is inclusive
+PARSE_DAYS += 1
+
 if args.rollover:
     LOG_ROLLOVER = args.rollover
 else:
@@ -74,23 +77,25 @@ if __name__ == '__main__':
         LOG_LEVEL = logging.INFO
         logger_setup()
         logger.info("__main__ called.")
+    for day in range(0, PARSE_DAYS):
+        current_target = target.format(day=day)
 
-    # In current method of running, only earnings whisper in epscalendar tag will
-    # be aggregated. Anything under "morecalendar"" will not
-    logger.info("Target: "+target)
-    r = requests.get(target).content
-    
-    soup = BeautifulSoup(r)
-    earnings_data = []
-    # eps calendar should always exist
-    datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
+        # In current method of running, only earnings whisper in epscalendar tag will
+        # be aggregated. Anything under "morecalendar"" will not
+        logger.info("Target: " + current_target)
+        r = requests.get(current_target).content
+        
+        soup = BeautifulSoup(r)
+        earnings_data = []
+        # eps calendar should always exist
+        datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
 
-    lis=datasets.findAll("li")
-    for li in lis:
-        try:
-            earnings_data.append(Earnings(li))
-        except:
-            pass
+        lis=datasets.findAll("li")
+        for li in lis:
+            try:
+                earnings_data.append(Earnings(li))
+            except:
+                pass
 
 def send_email(content):
     """send it home folks"""
