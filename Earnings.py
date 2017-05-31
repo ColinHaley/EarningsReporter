@@ -11,9 +11,8 @@ class Earnings(object):
         Estimated EPS: 
         Estimated Revenue:
     """
-
-    confirmed = None
-    company = None
+#   Todo, parse logo + company minutes
+#   __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
 
     def __init__(self, earnings_html):
         """parse html objects to variables
@@ -49,7 +48,7 @@ class Earnings(object):
             self.estimated_revenue = earnings_html.findAll('div', {'class':'revestimate'})[0].text #evenue estimate
         except:
             self.estimated_revenue = "Unspecified"
-#    __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
+
 
     def debug_print(self):
         print("Confirmed: {0}\nTicker: {1}\nCompany: {2}\nTime: {3}\nEstimated EPS: {4}\nEstimated Revenue: {5}\n---\n"
