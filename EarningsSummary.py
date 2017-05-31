@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import sys, datetime
+import sys
+from datetime import datetime, timedelta
 import argparse, logging, logging.handlers
 import requests
 import jinja2
@@ -10,6 +11,7 @@ from Logger import Logger
 import smtplib
 from email.mime.text import MIMEText
 import ConfigParser
+
 
 # Parse commandline args
 parser = argparse.ArgumentParser(description="Earnings Whispers Web Scraper")
@@ -34,7 +36,7 @@ else:
 if args.days:
     PARSE_DAYS = args.days
 else:
-    PARSE_DAYS = config.get('Scraper', 'days')
+    PARSE_DAYS = int(config.get('Scraper', 'days'))
 
 # 0 index, keep 0 but make sure top range is inclusive
 PARSE_DAYS += 1
@@ -47,7 +49,7 @@ else:
 if args.backup_count:
     BACKUP_COUNT = args.backup_count
 else:
-    BACKUP_COUNT = config.get('Logging', 'backups')
+    BACKUP_COUNT = int(config.get('Logging', 'backups'))
 
 # Logger object should be created either way in case of use.
 # un _setup() loggers will only write to console.
@@ -77,6 +79,9 @@ if __name__ == '__main__':
         LOG_LEVEL = logging.INFO
         logger_setup()
         logger.info("__main__ called.")
+    
+    earnings_data = {}
+
     for day in range(0, PARSE_DAYS):
         current_target = target.format(day=day)
 
@@ -84,16 +89,18 @@ if __name__ == '__main__':
         # be aggregated. Anything under "morecalendar"" will not
         logger.info("Target: " + current_target)
         r = requests.get(current_target).content
-        
         soup = BeautifulSoup(r)
-        earnings_data = []
+        
         # eps calendar should always exist
         datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
+
+        target_date = datetime.strftime(datetime.now() + timedelta(days=0),"%m%d%Y")
+        earnings_data[target_date] = []
 
         lis=datasets.findAll("li")
         for li in lis:
             try:
-                earnings_data.append(Earnings(li))
+                earnings_data[target_date].append(Earnings(li))
             except:
                 pass
 
