@@ -94,7 +94,7 @@ if __name__ == '__main__':
         # eps calendar should always exist
         datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
 
-        target_date = datetime.strftime(datetime.now() + timedelta(days=0),"%m%d%Y")
+        target_date = datetime.strftime(datetime.now() + timedelta(days=day),"%m%d%Y")
         earnings_data[target_date] = []
 
         lis=datasets.findAll("li")
