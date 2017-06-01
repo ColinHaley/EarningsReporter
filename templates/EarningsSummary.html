@@ -4,7 +4,10 @@
 		<h1>Placeholder</h1>
 
 		{% for date in earnings_data %}
+			{% for report in date %}
 			<div><a href="../{{ date.ticker }}">{{ date.ticker }}</a></div>
 			<!-- Placeholder -->
+			{% endfor %}
+		{% endfor %}
 	</body>
 </html>
