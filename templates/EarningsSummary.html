@@ -4,9 +4,41 @@
 		<h1>Placeholder</h1>
 
 		{% for date in earnings_data %}
+			<h3> {{ date.key }} </h3>
 			{% for report in date %}
-			<div><a href="../{{ date.ticker }}">{{ date.ticker }}</a></div>
-			<!-- Placeholder -->
+			<div>
+				<!-- Move away from a table eventually -->
+				<table>
+					<hr colspan="2">
+						<td>
+							{{ report.company }}
+						</td>
+					</hr>
+					<tr>
+						<td>
+							<a href="../{{ report.ticker }}">{{ report.ticker }}</a>
+						</td>
+						<td>
+							{% if { report.confirmed != "Unconfirmed" } %}
+								&#x2714;
+							{% else %}
+								?
+							{% endif %}
+						</td>
+					</tr>
+					<tr>
+						<!-- need to add headers here -->
+						<td>{{ report.estimated_eps }}</td>
+						<td>{{ report.estimated_revenue }}</td>
+					</tr>
+					<tr>
+						<td>{{ report.time }}</td>
+					</tr>	
+				</table>
+				
+			</div>
+			<hr>
+			
 			{% endfor %}
 		{% endfor %}
 	</body>
