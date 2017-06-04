@@ -74,6 +74,25 @@ def logger_setup():
     sys.stdout = Logger(logger, logging.INFO)
     sys.stderr = Logger(logger, logging.ERROR)
 
+
+def send_email(content):
+    """Content will be an object formatted as such:
+    {
+        "mmddyyyy" :
+        [
+            Earnings1,
+            Earnings2
+        ],
+        "mmddyyyy" :
+        [
+            Earnings1,
+            Earnings2
+        ]
+    }
+    
+    """
+
+
 if __name__ == '__main__':
     if not args.disable_log:
         LOG_LEVEL = logging.INFO
@@ -115,7 +134,4 @@ if __name__ == '__main__':
                 earnings_data[target_date].append(Earnings(li))
             except:
                 pass
-
-def send_email(content):
-    """send it home folks"""
 
