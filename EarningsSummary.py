@@ -4,14 +4,13 @@ import sys
 from datetime import datetime, timedelta
 import argparse, logging, logging.handlers
 import requests
-import jinja2
 from BeautifulSoup import BeautifulSoup
 from Earnings import Earnings
 from Logger import Logger
 import smtplib
 from email.mime.text import MIMEText
 import ConfigParser
-
+from jinja2 import Environment, PackageLoader
 
 # Parse commandline args
 parser = argparse.ArgumentParser(description="Earnings Whispers Web Scraper")
@@ -91,6 +90,11 @@ def send_email(content):
     }
     
     """
+    env = Environment(loader=PackageLoader('EarningsSumamry','templates'))
+    template = env.get_template('EarningsSummary.html')
+    email_html = template.render(earnings_data=content)
+
+    
 
 
 if __name__ == '__main__':
@@ -134,4 +138,4 @@ if __name__ == '__main__':
                 earnings_data[target_date].append(Earnings(li))
             except:
                 pass
-
+        
