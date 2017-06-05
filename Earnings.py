@@ -1,4 +1,5 @@
 import uuid
+from json import JSONEncoder
 
 class Earnings(object):
     """An individual event parsed from https://www.earningswhispers.com/calendar?sb=p&d=1&t=all&v=t
@@ -53,3 +54,6 @@ class Earnings(object):
     def debug_print(self):
         print("Confirmed: {0}\nTicker: {1}\nCompany: {2}\nTime: {3}\nEstimated EPS: {4}\nEstimated Revenue: {5}\n---\n"
         .format(self.confirmed, self.ticker, self.company, self.time, self.estimated_eps, self.estimated_revenue))
+
+#    def to_json(self):
+#         return {"do":"some","json":"magics"}
