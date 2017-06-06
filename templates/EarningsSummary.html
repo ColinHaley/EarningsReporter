@@ -16,7 +16,7 @@
 					</hr>
 					<tr>
 						<td>
-							<a href="../{{ report.ticker }}">{{ report.ticker }}</a>
+							<a colspan="2" href="../{{ report.ticker }}">{{ report.ticker }}</a>
 						</td>
 						<td>
 							{% if  report.confirmed != "Unconfirmed"  %}
@@ -37,8 +37,6 @@
 				</table>
 				
 			</div>
-			<hr>
-			
 			{% endfor %}
 		{% endfor %}
 	</body>
