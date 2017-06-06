@@ -10,16 +10,14 @@
 				<!-- Move away from a table eventually -->
 				<table>
 					<th colspan="2">
-						<td>
-							{{ report.company }}
-						</td>
+						{{ report.company }}
 					</th>
 
 					<tr>
 						<td>
 							<a colspan="2" href="../{{ report.ticker }}">{{ report.ticker }}</a>
 						</td>
-						<td>
+						<td style="text-align:center">
 							{% if  report.confirmed != "Unconfirmed"  %}
 								&#x2714;
 							{% else %}
@@ -34,9 +32,9 @@
 						<td>{{ report.estimated_revenue }}</td>
 					</tr>
 
-					<tr>
+					<th>
 						<td>{{ report.time }}</td>
-					</tr>	
+					</th>	
 				</table>
 				
 			</div>
