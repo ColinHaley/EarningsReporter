@@ -9,11 +9,12 @@
 			<div>
 				<!-- Move away from a table eventually -->
 				<table>
-					<tr colspan="2">
+					<th colspan="2">
 						<td>
 							{{ report.company }}
 						</td>
-					</tr>
+					</th>
+
 					<tr>
 						<td>
 							<a colspan="2" href="../{{ report.ticker }}">{{ report.ticker }}</a>
@@ -26,11 +27,13 @@
 							{% endif %}
 						</td>
 					</tr>
+
 					<tr>
 						<!-- need to add headers here -->
 						<td>{{ report.estimated_eps }}</td>
 						<td>{{ report.estimated_revenue }}</td>
 					</tr>
+
 					<tr>
 						<td>{{ report.time }}</td>
 					</tr>	
