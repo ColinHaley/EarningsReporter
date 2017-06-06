@@ -135,7 +135,7 @@ def send_email(content):
     msg['To'] = SEND_TO
 
     s = smtplib.SMTP(SMTP_SERVER)
-    s.sendmail(SEND_TO, SEND_TO, msg.as_string)
+    s.sendmail(SEND_TO, SEND_TO, str(msg)
 
 if __name__ == '__main__':
     if not args.disable_log:
@@ -179,4 +179,4 @@ if __name__ == '__main__':
             except:
                 pass
         
-        send_email(earnings_data)
+    send_email(earnings_data)
