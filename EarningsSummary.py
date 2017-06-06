@@ -135,6 +135,7 @@ def send_email(content):
     msg['To'] = SEND_TO
 
     s = smtplib.SMTP(SMTP_SERVER)
+    s.login(SMTP_USER, SMTP_PSWD)
     s.sendmail(SEND_TO, SEND_TO, str(msg))
 
 if __name__ == '__main__':
