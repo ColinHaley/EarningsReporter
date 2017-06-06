@@ -143,40 +143,40 @@ if __name__ == '__main__':
         logger_setup()
         logger.info("__main__ called.")
     
-earnings_data = {}
+    earnings_data = {}
 
-for day in range(0, PARSE_DAYS):
-    current_target = target.format(day=day)
+    for day in range(0, PARSE_DAYS):
+        current_target = target.format(day=day)
 
-    # In current method of running, only earnings whisper in epscalendar tag will
-    # be aggregated. Anything under "morecalendar"" will not
-    
-    try:
-        r = requests.get(current_target)
-        content = r.content
-        logger.info("Succesfully Requested: {0}".format(current_target) )
-    except:
-        #todo, add individual except blocks per failure type.
-        logger.critical("Unable to request {0}".format(current_target))
-        logger.critical("Request Status: {0}".format(str(r)))
-        sys.exit(1)
-    try:
-        soup = BeautifulSoup(content)
-    except:
-        logger.critical("Unable to create BeautifulSoup object from {0}".format(current_target))
-    
-    # eps calendar should always exist
-    datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
-
-    target_date = datetime.strftime(datetime.now() + timedelta(days=day),"%m%d%Y")
-    earnings_data[target_date] = []
-
-    lis=datasets.findAll("li")
-    logger.info("Parsing {0} html tags".format(len(lis)))
-    for li in lis:
+        # In current method of running, only earnings whisper in epscalendar tag will
+        # be aggregated. Anything under "morecalendar"" will not
+        
         try:
-            earnings_data[target_date].append(Earnings(li))
+            r = requests.get(current_target)
+            content = r.content
+            logger.info("Succesfully Requested: {0}".format(current_target) )
         except:
-            pass
-    
-    send_email(earnings_data)
+            #todo, add individual except blocks per failure type.
+            logger.critical("Unable to request {0}".format(current_target))
+            logger.critical("Request Status: {0}".format(str(r)))
+            sys.exit(1)
+        try:
+            soup = BeautifulSoup(content)
+        except:
+            logger.critical("Unable to create BeautifulSoup object from {0}".format(current_target))
+        
+        # eps calendar should always exist
+        datasets = soup.findAll("ul", {"id":"epscalendar"})[0]
+
+        target_date = datetime.strftime(datetime.now() + timedelta(days=day),"%m%d%Y")
+        earnings_data[target_date] = []
+
+        lis=datasets.findAll("li")
+        logger.info("Parsing {0} html tags".format(len(lis)))
+        for li in lis:
+            try:
+                earnings_data[target_date].append(Earnings(li))
+            except:
+                pass
+        
+        send_email(earnings_data)
