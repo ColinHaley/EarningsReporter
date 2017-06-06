@@ -123,9 +123,17 @@ def send_email(content):
     }
     
     """
-    env = Environment(loader=PackageLoader('EarningsSummary','templates'))
-    template = env.get_template('EarningsSummary.html')
-    email_html = template.render(earnings_data=content)
+    try:
+        env = Environment(loader=PackageLoader('EarningsSummary','templates'))
+        template = env.get_template('EarningsSummary.html')
+    except:
+        logger.critical("Unable to email template.")
+        sys.exit(1)
+    try:
+        email_html = template.render(earnings_data=content)
+    except:
+        logger.critical("Unable to render template.")
+        sys.exit(1)
 
     msg = MIMEText(email_html)
 
