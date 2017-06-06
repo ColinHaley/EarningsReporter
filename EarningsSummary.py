@@ -187,4 +187,5 @@ if __name__ == '__main__':
             except:
                 pass
         
-    send_email(earnings_data)
+    # Quick fix to not send first item which appears to never be valid.
+    send_email(earnings_data[1:])
