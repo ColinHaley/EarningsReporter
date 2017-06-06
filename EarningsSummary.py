@@ -135,7 +135,7 @@ def send_email(content):
         logger.critical("Unable to render template.")
         sys.exit(1)
 
-    msg = MIMEText(email_html)
+    msg = MIMEText(email_html, 'html')
 
     msg['Subject'] = "Earnings Report"
     msg['From'] = SEND_FROM
