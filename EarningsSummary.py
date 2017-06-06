@@ -127,7 +127,6 @@ def send_email(content):
     template = env.get_template('EarningsSummary.html')
     email_html = template.render(earnings_data=content)
 
-    email_html
     msg = MIMEText(email_html)
 
     msg['Subject'] = "Earnings Report"
