@@ -4,8 +4,8 @@
 		<h1>Placeholder</h1>
 
 		{% for date in earnings_data %}
-			<h3> {{ date.key }} </h3>
-			{% for report in date %}
+			<h3> {{ date }} </h3>
+			{% for report in date.items() %}
 			<div>
 				<!-- Move away from a table eventually -->
 				<table>
