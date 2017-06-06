@@ -143,7 +143,7 @@ def send_email(content):
 
     s = smtplib.SMTP(SMTP_SERVER)
     s.login(SMTP_USER, SMTP_PSWD)
-    s.sendmail(SEND_TO, SEND_TO, msg)
+    s.sendmail(SEND_TO, SEND_TO, str(msg))
 
 if __name__ == '__main__':
     if not args.disable_log:
