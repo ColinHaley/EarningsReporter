@@ -188,4 +188,4 @@ if __name__ == '__main__':
                 pass
         
     # Quick fix to not send first item which appears to never be valid.
-    send_email(earnings_data[1:])
+    send_email(earnings_data)

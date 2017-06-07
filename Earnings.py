@@ -50,7 +50,6 @@ class Earnings(object):
         except:
             self.estimated_revenue = "Unspecified"
 
-
     def debug_print(self):
         print("Confirmed: {0}\nTicker: {1}\nCompany: {2}\nTime: {3}\nEstimated EPS: {4}\nEstimated Revenue: {5}\n---\n"
         .format(self.confirmed, self.ticker, self.company, self.time, self.estimated_eps, self.estimated_revenue))
