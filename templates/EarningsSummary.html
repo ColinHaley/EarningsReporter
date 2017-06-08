@@ -15,8 +15,9 @@
 		<h1>Placeholder</h1>
 		{% for date in earnings_data %}
 			<h3> {{ date }} </h3>
+			<span>
 			{% for report in earnings_data[date] %}
-			<div>
+			
 				<table class="earningswhisper">
 					<th colspan="2">
 						{{ report.company }}
@@ -42,8 +43,9 @@
 						{{ report.time }}
 					</th>	
 				</table>			
-			</div>
+			
 			{% endfor %}
+			</span>
 		{% endfor %}
 	</body>
 </html>
