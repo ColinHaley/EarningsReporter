@@ -5,11 +5,14 @@
 			table.earningswhisper {
 				background-color: #eeeeee;
     			border-radius: 25px;
-				padding-bottom: 2px; 
+				padding: 2px; 
     			width: 200px;
     			height: 150px; 
 			}
 		</style>
+		<title>
+			Earnings Summary {{ date }}
+		</title>
 	</head>
 	<body>
 		<h1>Placeholder</h1>
@@ -24,7 +27,9 @@
 					</th>
 					<tr>
 						<td>
-							<a colspan="2" href="../{{ report.ticker }}">{{ report.ticker }}</a>
+							<a colspan="2" href="../{{ report.ticker }}">
+								{{ report.ticker }}
+							</a>
 						</td>
 						<td style="text-align:center">
 							{% if  report.confirmed != "Unconfirmed"  %}
