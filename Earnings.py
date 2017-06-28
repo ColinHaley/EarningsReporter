@@ -15,6 +15,11 @@ class Earnings(object):
 #   Todo, parse logo + company minutes
 #   __logo_base__ = "http://cdn.instantlogosearch.com/png?id=instantlogosearch-{0}"
 
+    def serialize(self):
+        #Placeholder
+    def deserialize(self):
+        #Placeholder
+
     def __init__(self, earnings_html):
         """parse html objects to variables
         
