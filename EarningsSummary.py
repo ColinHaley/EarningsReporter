@@ -148,7 +148,8 @@ def send_email(content):
 #Todo: archive Daily to database for static non-email consumption
 
 def archive_to_database(earnings_data):
-    #do stuff
+    # send async to db storage
+    
 
 if __name__ == '__main__':
     if not args.disable_log:
