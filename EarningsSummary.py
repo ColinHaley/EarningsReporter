@@ -145,6 +145,11 @@ def send_email(content):
     s.login(SMTP_USER, SMTP_PSWD)
     s.sendmail(SEND_TO, SEND_TO, str(msg))
 
+#Todo: archive Daily to database for static non-email consumption
+
+def archive_to_database(earnings_data):
+    #do stuff
+
 if __name__ == '__main__':
     if not args.disable_log:
         LOG_LEVEL = logging.INFO
