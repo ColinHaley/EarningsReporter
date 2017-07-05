@@ -195,6 +195,12 @@ if __name__ == '__main__':
             except:
                 pass
         
-    invert_items = {v: k for k, v in earnings_data.iteritems()}
+    invert_items = {}
+
+    for k, v in earnings_data.iteritems():
+        keys = invert_items.setdefault(v, [])
+        keys.append(k)
+
+
     send_email(earnings_data)
     send_email(invert_items)
