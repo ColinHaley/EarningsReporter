@@ -195,5 +195,6 @@ if __name__ == '__main__':
             except:
                 pass
         
-    # Quick fix to not send first item which appears to never be valid.
+    invert_items = {v: k for k, v in earnings_data.iteritems()}
     send_email(earnings_data)
+    send_email(invert_items)
