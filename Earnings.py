@@ -17,8 +17,10 @@ class Earnings(object):
 
     def serialize(self):
         #Placeholder
+        return None
     def deserialize(self):
         #Placeholder
+        return None
 
     def __init__(self, earnings_html):
         """parse html objects to variables

@@ -150,7 +150,7 @@ def send_email(content):
 def archive_to_database(earnings_data):
     # send async to db storage
     logger.warn("Empty ArchiveDB call")
-
+    #todo: ad mysql strings as env vars
 if __name__ == '__main__':
     if not args.disable_log:
         LOG_LEVEL = logging.INFO
