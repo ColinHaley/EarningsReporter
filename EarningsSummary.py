@@ -159,7 +159,7 @@ if __name__ == '__main__':
     
     earnings_data = {}
 
-    for day in range(1, PARSE_DAYS):
+    for day in range(PARSE_DAYS,1,-1):
         current_target = target.format(day=day)
 
         # In current method of running, only earnings whisper in epscalendar tag will
@@ -188,7 +188,6 @@ if __name__ == '__main__':
         lis=datasets.findAll("li")
         logger.info("Parsing {0} html tags".format(len(lis)))
         lis = lis[1:]
-        lis = lis[::-1]
         
         for li in lis:
             try:
