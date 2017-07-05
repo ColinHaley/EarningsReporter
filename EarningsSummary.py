@@ -159,7 +159,7 @@ if __name__ == '__main__':
     
     earnings_data = {}
 
-    for day in range(PARSE_DAYS,0,step=-1):
+    for day in range(PARSE_DAYS,0,-1):
         current_target = target.format(day=day)
 
         # In current method of running, only earnings whisper in epscalendar tag will
