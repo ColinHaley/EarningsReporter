@@ -187,7 +187,8 @@ if __name__ == '__main__':
 
         lis=datasets.findAll("li")
         logger.info("Parsing {0} html tags".format(len(lis)))
-        lis = lis[1::-1]
+        lis = lis[1:]
+        lis = lis[::-1]
         
         for li in lis:
             try:
