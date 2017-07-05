@@ -187,7 +187,8 @@ if __name__ == '__main__':
 
         lis=datasets.findAll("li")
         logger.info("Parsing {0} html tags".format(len(lis)))
-        lis = lis[1:].sort(reverse=True)
+        lis = lis[1:]
+        lis = lis.sort(reverse=True)
         for li in lis:
             try:
                 earnings_data[target_date].append(Earnings(li))
