@@ -149,7 +149,7 @@ def send_email(content):
 
 def archive_to_database(earnings_data):
     # send async to db storage
-    logger.warn("Empty ArchiveDB call")
+    logger.info("Empty ArchiveDB call")
     #todo: ad mysql strings as env vars
 if __name__ == '__main__':
     if not args.disable_log:
@@ -194,13 +194,4 @@ if __name__ == '__main__':
                 earnings_data[target_date].append(Earnings(li))
             except:
                 pass
-        
-    invert_items = {}
-
-    for k, v in earnings_data.iteritems():
-        keys = invert_items.setdefault(v, [])
-        keys.append(k)
-
-
     send_email(earnings_data)
-    send_email(invert_items)
